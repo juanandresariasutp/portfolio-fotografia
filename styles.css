@@ -379,3 +379,59 @@ button:hover {
   transform: scale(1.03);
   filter: brightness(1.05);
 }
+
+/* Contenedor principal para que el texto respire */
+.category-header {
+  padding: 0 5%;
+  margin-bottom: 40px;
+}
+
+/* Ajuste del grid para que sea de borde a borde si lo deseas */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px; /* Espacio pequeño entre opciones */
+  width: 100%;
+}
+
+.sub-category-card {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  display: block; /* Para que el Link ocupe todo el espacio */
+}
+
+.sub-category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* Overlay para que el texto sea SIEMPRE legible */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+  transition: background 0.4s ease;
+}
+
+.card-overlay span {
+  color: white;
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Efectos al pasar el mouse */
+.sub-category-card:hover img {
+  transform: scale(1.1);
+}
+
+.sub-category-card:hover .card-overlay {
+  background: rgba(134, 132, 255, 0.3); /* Un tinte de tu color de acento */
+}

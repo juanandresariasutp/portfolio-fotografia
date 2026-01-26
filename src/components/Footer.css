@@ -1,0 +1,83 @@
+.footer {
+  background-color: #000; /* Fondo negro puro */
+  color: #fff;
+  padding: 60px 5% 20px 5%;
+  border-top: 1px solid #222; /* Línea divisoria muy sutil */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand h2 {
+  font-family: var(--font-title);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-socials a {
+  color: #fff;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-socials a:hover {
+  color: var(--accent-primary); /* Tu color púrpura/azul */
+  transform: translateY(-5px);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+    width: 100%;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ffffff;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+
+}
+.footer-bottom p {
+  margin: 0 auto;        /* Elimina márgenes extra y centra el bloque */
+  text-align: center;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
