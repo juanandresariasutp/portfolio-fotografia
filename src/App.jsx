@@ -3,8 +3,26 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Mi portafolio fotográfico</h1>
-      <p>Eventos · Deportes · Gastronomía · Retratos</p>
+      {/* HERO */}
+      <section>
+        <h1>Juan Arias</h1>
+        <h2>Fotógrafo de eventos y deportes</h2>
+        <p>
+          Capturo momentos reales a través de la fotografía de eventos,
+          deportes, gastronomía y retratos.
+        </p>
+      </section>
+
+      {/* CATEGORÍAS */}
+      <section>
+        <h3>Mi trabajo</h3>
+        <ul>
+          <li>📸 Fotografía de eventos</li>
+          <li>🏃 Fotografía deportiva</li>
+          <li>🍽️ Fotografía gastronómica</li>
+          <li>👤 Retratos</li>
+        </ul>
+      </section>
     </div>
   );
 }
