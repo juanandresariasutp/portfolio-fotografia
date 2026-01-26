@@ -79,7 +79,7 @@ button:hover {
 ===================== */
 
 .hero {
-  min-height: 50vh;       /* Reducido de 90vh a 60vh para que la sección sea más baja */
+  min-height: 70vh;       /* Reducido de 90vh a 60vh para que la sección sea más baja */
   width: 100%;            /* ¡IMPORTANTE! Cambia ese 200% por 100% para quitar el borde derecho */
   display: flex;
   flex-direction: column;
@@ -87,6 +87,7 @@ button:hover {
   align-items: center;    /* Centra todo horizontalmente */
   gap: 8px;              /* Reduce el espacio entre el nombre, el párrafo y el botón */
   padding: 40px 0;        /* Controla manualmente el espacio mínimo arriba y abajo */
+  padding-top:140px;     
   text-align: center;
 }
 .hero {
