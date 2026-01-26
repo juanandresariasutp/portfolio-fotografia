@@ -1,13 +1,29 @@
+import { Link } from 'react-router-dom';
+
+
 function Categories() {
   return (
-    <section>
-      <h3>Mi trabajo</h3>
-      <ul>
-        <li>📸 Fotografía de eventos</li>
-        <li>🏃 Fotografía deportiva</li>
-        <li>🍽️ Fotografía gastronómica</li>
-        <li>👤 Retratos</li>
-      </ul>
+    <section className="categories-section">
+      <h3 className="categories-title">Mi trabajo</h3>
+
+      <div className="categories-grid">
+        <Link to="/eventos" className="category-card">
+        Eventos
+        </Link>
+
+
+        <a href="/deportes" className="category-card">
+          Deportes
+        </a>
+
+        <a href="/gastronomia" className="category-card">
+          Gastronómica
+        </a>
+
+        <a href="/retratos" className="category-card">
+          Retratos
+        </a>
+      </div>
     </section>
   );
 }

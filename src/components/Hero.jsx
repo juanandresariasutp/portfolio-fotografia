@@ -1,12 +1,12 @@
 function Hero() {
   return (
-    <section>
-      <h1>Juan Arias</h1>
-      <h2>Fotógrafo de eventos y deportes</h2>
-      <p>
-        Capturo momentos reales a través de la fotografía de eventos,
-        deportes, gastronomía y retratos.
-      </p>
+    <section className="hero">
+      <h1>Juan Andrés Arias</h1>
+      <p>Fotógrafo de eventos, deportes y retratos</p>
+
+      <a href="#contact" className="hero-btn">
+        Contáctame
+      </a>
     </section>
   );
 }

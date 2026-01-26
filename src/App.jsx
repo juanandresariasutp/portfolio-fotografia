@@ -1,29 +1,30 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Hero from './components/Hero';
+import Categories from './components/Categories';
+import Contact from './components/Contact';
+
+import Eventos from './pages/Eventos';
 
 function App() {
   return (
-    <div>
-      {/* HERO */}
-      <section>
-        <h1>Juan Arias</h1>
-        <h2>Fotógrafo de eventos y deportes</h2>
-        <p>
-          Capturo momentos reales a través de la fotografía de eventos,
-          deportes, gastronomía y retratos.
-        </p>
-      </section>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <Categories />
+              <Contact />
+            </>
+          }
+        />
 
-      {/* CATEGORÍAS */}
-      <section>
-        <h3>Mi trabajo</h3>
-        <ul>
-          <li>📸 Fotografía de eventos</li>
-          <li>🏃 Fotografía deportiva</li>
-          <li>🍽️ Fotografía gastronómica</li>
-          <li>👤 Retratos</li>
-        </ul>
-      </section>
-    </div>
+        <Route path="/eventos" element={<Eventos />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
