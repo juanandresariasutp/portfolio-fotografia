@@ -1,11 +1,18 @@
 .categories-section {
-        
   width: 100%;
-  padding: 100px 5%;
-  background-color: #000;
+  /* Cambiamos el negro sólido por uno con transparencia para que se vea la Aurora */
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 50px 10%; /* Aumentamos el padding lateral para centrar y reducir el grid */
+  padding-right: 40px;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .categories-header {
+  width: 100%;
+  max-width: 1100px; /* Limitamos el ancho para que se vea más contenido */
   margin-bottom: 50px;
   display: flex;
   align-items: center;
@@ -14,7 +21,7 @@
 
 .categories-title {
   font-family: var(--font-title);
-  font-size: 2rem;
+  font-size: 1.8rem; /* Un poco más pequeño para mayor elegancia */
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -29,13 +36,16 @@
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  /* Reducimos el minmax para que las columnas sean más angostas y quepan más */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px; /* Gap más pequeño para un look más compacto */
+  width: 100%;
+  max-width: 1100px; /* Evita que las cajas se estiren demasiado en pantallas grandes */
 }
 
 .category-card {
   position: relative;
-  height: 350px; /* Altura más imponente */
+  height: 15rem; /* Altura reducida para que las cajas sean más pequeñas */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -44,6 +54,7 @@
   background-size: cover;
   background-position: center;
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 4px; /* Un borde sutil para definir las cajas */
 }
 
 /* AQUÍ DEBES PONER TUS IMÁGENES DE FONDO */
@@ -52,11 +63,10 @@
 .cat-gastronomia { background-image: url('../assets/gastro-bg.jpg'); }
 .cat-retratos { background-image: url('../assets/retratos-bg.jpg'); }
 
-/* Overlay oscuro que se aclara en hover */
 .category-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4); /* Un poco más oscuro para que resalte el texto */
   transition: background 0.3s ease-in-out;
   z-index: 1;
 }
@@ -66,16 +76,16 @@
   z-index: 2;
   color: #fff;
   font-family: var(--font-title);
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Texto ajustado al nuevo tamaño de caja */
   letter-spacing: 3px;
   text-transform: uppercase;
   transition: transform 0.4s ease, color 0.4s ease;
+  text-shadow: 1px 1px 15px rgba(0, 0, 0, 1);
 }
 
-/* Borde interno elegante que aparece en hover */
 .category-border {
   position: absolute;
-  inset: 20px;
+  inset: 15px; /* Margen interno del borde más ajustado */
   border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 3;
   opacity: 0;
@@ -83,15 +93,14 @@
   transition: all 0.4s ease;
 }
 
-/* --- EFECTOS HOVER --- */
+/* --- HOVER --- */
 
 .category-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
 }
 
 .category-card:hover .category-overlay {
-  background: rgba(141, 141, 141, 0.2); /* Cambia al color de tu marca con transparencia */
-  /* Si no tienes --accent-rgb, usa: background: rgba(138, 43, 226, 0.4); */
+  background: rgba(0, 0, 0, 0.3); /* Deja ver mejor la foto en hover */
 }
 
 .category-card:hover .category-text {
@@ -105,7 +114,6 @@
   border-color: var(--accent-primary);
 }
 
-/* Efecto de zoom en la "imagen" de fondo */
 .category-card::before {
   content: "";
   position: absolute;
@@ -122,7 +130,13 @@
   .categories-section {
     padding: 60px 5%;
   }
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas fijas en móvil */
+  }
   .category-card {
-    height: 250px;
+    height: 180px; /* Cajas compactas en celular */
+  }
+  .category-text {
+    font-size: 1rem;
   }
 }
