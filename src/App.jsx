@@ -9,7 +9,8 @@ import Hero from './components/Hero';
 import Categories from './components/Categories';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import PageTransition from './components/PageTransition'; // Asegúrate de haber creado este archivo
+import PageTransition from './components/PageTransition';
+import Aurora from './components/Aurora/Aurora'; // <-- Importamos Aurora
 
 // Páginas
 import Eventos from './pages/Eventos';
@@ -82,6 +83,16 @@ function AnimatedRoutes() {
 function App() {
   return (
     <BrowserRouter>
+      {/* Aurora se coloca aquí para que sirva de fondo global */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+        <Aurora
+          colorStops={["#000001", "#454496", "#8684ff"]}
+          blend={1}
+          amplitude={1.0}
+          speed={1.2}
+        />
+      </div>
+
       <ScrollToTop />
       <Navbar />
       
