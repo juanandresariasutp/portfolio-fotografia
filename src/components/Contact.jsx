@@ -1,62 +1,66 @@
+import React from 'react';
+import './Contact.css';
+
 function Contact() {
   return (
-    <section className="contact-section">
-      <h3 className="contact-title">Contacto</h3>
+    <section className="contact-section" id="contact">
+      <div className="contact-container">
+        
+        {/* La tarjeta con fondo traslúcido empieza aquí */}
+        <div className="contact-card">
+          <div className="contact-header">
+            <h3 className="contact-title">Hablemos</h3>
+            <p className="contact-subtitle">Déjame tus datos y me pondré en contacto contigo.</p>
+          </div>
 
-      <form
-        className="contact-form"
-        action="https://formspree.io/f/mpqdrovv"
-        method="POST"
-        name="contact"
-      >
-        {/* Anti-spam */}
-        <input type="text" name="_gotcha" style={{ display: "none" }} />
+          <form
+            className="contact-form"
+            action="https://formspree.io/f/mpqdrovv"
+            method="POST"
+          >
+            <input type="text" name="_gotcha" style={{ display: "none" }} />
+            <input type="hidden" name="_subject" value="Nuevo contacto desde el Portafolio" />
 
-        <input
-          type="hidden"
-          name="_subject"
-          value="Nuevo mensaje desde tu portafolio"
-        />
+            <div className="form-group">
+              <input type="text" name="name" id="name" placeholder="Nombre completo" required />
+              <span className="input-line"></span>
+            </div>
 
-        <label className="sr-only" htmlFor="name">Nombre</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          placeholder="Nombre"
-          required
-        />
+            <div className="form-row">
+              <div className="form-group">
+                <input type="tel" name="phone" id="phone" placeholder="Celular" required />
+                <span className="input-line"></span>
+              </div>
+              <div className="form-group">
+                <input type="email" name="email" id="email" placeholder="Correo electrónico" required />
+                <span className="input-line"></span>
+              </div>
+            </div>
 
-        <label className="sr-only" htmlFor="email">Correo</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          placeholder="Correo electrónico"
-          required
-        />
+            <div className="checkbox-group">
+              <input type="checkbox" id="auth" name="authorization" required />
+                <label htmlFor="auth">Autorizo que me envíen información.</label>
+            </div>
 
-        <label className="sr-only" htmlFor="message">Mensaje</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Cuéntame sobre tu evento o proyecto"
-          required
-        ></textarea>
+            <button type="submit" className="submit-btn">
+              Enviar
+            </button>
+          </form>
 
-        <button type="submit">Enviar</button>
-      </form>
+          <div className="contact-alt">
+            <a
+              href="https://wa.me/573207161427"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp-link"
+            >
+              O escríbeme por WhatsApp
+            </a>
+          </div>
+        </div>
+        {/* Fin de la tarjeta */}
 
-      <p className="contact-alt">
-        O contáctame por{" "}
-        <a
-          href="https://wa.me/573207161427"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp
-        </a>
-      </p>
+      </div>
     </section>
   );
 }

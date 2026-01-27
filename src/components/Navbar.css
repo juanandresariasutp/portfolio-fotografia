@@ -13,7 +13,7 @@
 /* Efecto cuando bajas la página (Scroll) */
 .navbar.scrolled {
   padding: 15px 5%;
-  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro translúcido */
+  background: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
   backdrop-filter: blur(10px);    /* Efecto de cristal borroso */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

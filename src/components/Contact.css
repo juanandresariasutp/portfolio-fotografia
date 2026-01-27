@@ -1,0 +1,151 @@
+.contact-section {
+  width: 100%;
+  padding: 100px 5%;
+  background: transparent; /* Sección sin fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 650px;
+}
+
+/* La tarjeta con efecto de vidrio */
+.contact-card {
+  background: rgba(255, 255, 255, 0.03); /* Fondo blanco casi invisible */
+  backdrop-filter: blur(5px); /* El efecto de desenfoque del fondo Aurora */
+  -webkit-backdrop-filter: blur(15px);
+  padding: 10px 40px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde muy sutil */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-title {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin: 0 0 0 0;
+  padding: 0px;
+}
+
+.contact-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.contact-form input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 20px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 5px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-primary);
+  transition: width 0.4s ease;
+}
+
+.contact-form input:focus ~ .input-line {
+  width: 100%;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center; /* Centra verticalmente el check con el texto */
+  justify-content: flex-start; /* Alinea ambos elementos a la izquierda, pegaditos */
+  gap: 10px; /* <--- ESTE es el valor que controla la distancia. Cámbialo a tu gusto */
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%; /* Asegura que el contenedor no empuje el contenido a los extremos */
+}
+
+.checkbox-group label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  line-height: 1; /* Evita espacios extra por la altura de línea */
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin: 0; /* Quita márgenes por defecto del navegador */
+  cursor: pointer;
+}
+
+.submit-btn {
+  width: 100%; /* Botón ancho para este diseño de tarjeta */
+  padding: 16px;
+  background: var(--accent-primary);
+  border: none;
+  color: #000;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-alt {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.whatsapp-link {
+  color: #25d366;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.3s;
+}
+
+@media (max-width: 600px) {
+  .contact-card {
+    padding: 40px 20px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
