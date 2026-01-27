@@ -1,7 +1,8 @@
-import React from 'react';
-import './EventosDetalle.css'; // Crearemos este CSS ahora
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import './EventosDetalle.css';
 
-// Importa tus fotos de la carpeta assets/eventos/bodas/
 import foto1 from '../../assets/eventos/bodas/boda1.jpg';
 import foto2 from '../../assets/eventos/bodas/boda2.jpg';
 // ... importa las demás
@@ -9,10 +10,14 @@ import foto2 from '../../assets/eventos/bodas/boda2.jpg';
 const fotosBodas = [
   { id: 1, src: foto1, alt: 'Momento de la ceremonia' },
   { id: 2, src: foto2, alt: 'Sesión de novios' },
-  // ... añade las demás aquí
 ];
 
 function Bodas() {
+  const [selectedImg, setSelectedImg] = useState(null);
+
+  const abrirImagen = (foto) => setSelectedImg(foto);
+  const cerrarImagen = () => setSelectedImg(null);
+
   return (
     <div className="detalle-evento-page">
       <header className="detalle-header">
@@ -23,11 +28,44 @@ function Bodas() {
 
       <div className="masonry-grid">
         {fotosBodas.map((foto) => (
-          <div key={foto.id} className="masonry-item">
+          <motion.div 
+            key={foto.id} 
+            className="masonry-item"
+            layoutId={foto.id} // Efecto de expansión suave
+            onClick={() => abrirImagen(foto)}
+          >
             <img src={foto.src} alt={foto.alt} loading="lazy" />
-          </div>
+          </motion.div>
         ))}
       </div>
+
+      {/* MODAL DEL LIGHTBOX */}
+      <AnimatePresence>
+        {selectedImg && (
+          <motion.div 
+            className="lightbox-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={cerrarImagen}
+          >
+            <button className="close-lightbox" onClick={cerrarImagen}>
+              <X size={40} />
+            </button>
+            
+            <motion.img 
+              src={selectedImg.src} 
+              alt={selectedImg.alt}
+              initial={{ scale: 0.8, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 50 }}
+              onClick={(e) => e.stopPropagation()} // Evita cerrar al tocar la foto
+            />
+            
+            <p className="lightbox-caption">{selectedImg.alt}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

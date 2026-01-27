@@ -1,56 +1,151 @@
 .detalle-evento-page {
   min-height: 100vh;
-  padding: 40px 0; /* Sin padding lateral para que las fotos lleguen al borde */
+  /* Aumentado de 40px a 120px para que el Navbar no tape el botón */
+  padding: 120px 0 40px 0; 
 }
 
 .detalle-header {
   padding: 0 5%;
   margin-bottom: 50px;
-  text-align: center;
+  /* Cambiado de center a left para evitar conflictos con el menú */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .back-btn {
   background: transparent;
   border: 1px solid var(--accent-primary);
   color: var(--accent-primary);
-  padding: 8px 16px;
+  padding: 10px 20px;
   cursor: pointer;
-  margin-bottom: 20px;
-  transition: all 0.3s;
+  width: fit-content; /* El botón solo ocupa lo que mide su texto */
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  font-family: var(--font-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  /* Asegura que el botón reciba los clics */
+  position: relative;
+  z-index: 10;
 }
 
 .back-btn:hover {
   background: var(--accent-primary);
   color: #000;
+  transform: translateX(-5px); /* Pequeño desplazamiento a la izquierda */
+}
+
+.detalle-header h1 {
+  margin: 10px 0 0 0;
+  font-size: 2.5rem;
+  font-family: var(--font-title);
+  color: #fff;
+}
+
+.detalle-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1rem;
 }
 
 /* EFECTO MASONRY (Tipo Pinterest) */
 .masonry-grid {
-  columns: 3 300px; /* 3 columnas que se ajustan solas según el ancho */
-  column-gap: 10px;
-  padding: 0 10px;
+  columns: 3 300px;
+  column-gap: 15px;
+  padding: 0 15px;
 }
 
 .masonry-item {
-  margin-bottom: 10px;
-  break-inside: avoid; /* Evita que la foto se corte entre columnas */
+  margin-bottom: 15px;
+  break-inside: avoid;
   overflow: hidden;
+  cursor: zoom-in;
+  border-radius: 4px;
 }
 
 .masonry-item img {
   width: 100%;
   display: block;
-  transition: filter 0.4s ease, transform 0.4s ease;
-  cursor: zoom-in;
+  transition: all 0.5s ease;
 }
 
 .masonry-item img:hover {
   filter: brightness(1.1);
-  transform: scale(1.02);
+  transform: scale(1.03);
+}
+
+/* Estilos para el Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  border-radius: 4px;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.close-lightbox:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 30px;
+  color: #fff;
+  font-family: var(--font-text);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 15px;
+  border-radius: 20px;
 }
 
 @media (max-width: 768px) {
+  .detalle-evento-page {
+    padding-top: 100px; /* Un poco menos en móvil */
+  }
+  
   .masonry-grid {
-    columns: 2 200px;
+    columns: 2 180px;
+    column-gap: 10px;
+    padding: 0 10px;
+  }
+
+  .detalle-header h1 {
+    font-size: 2rem;
   }
 }

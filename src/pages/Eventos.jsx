@@ -15,7 +15,9 @@ const subEventos = [
 function Eventos() {
   return (
     <section className="category-page">
+      <button onClick={() => window.history.back()} className="back-btn">← Volver</button>
       <div className="category-header">
+        
         <h1>Eventos</h1>
         <p>Capturando momentos inolvidables en tus celebraciones más especiales.</p>
       </div>
