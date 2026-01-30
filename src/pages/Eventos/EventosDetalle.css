@@ -1,151 +1,151 @@
+/* Reutilizamos los estilos de cabecera de la página anterior */
 .detalle-evento-page {
+  padding: 120px 5% 60px;
   min-height: 100vh;
-  /* Aumentado de 40px a 120px para que el Navbar no tape el botón */
-  padding: 120px 0 40px 0; 
 }
 
-.detalle-header {
-  padding: 0 5%;
-  margin-bottom: 50px;
-  /* Cambiado de center a left para evitar conflictos con el menú */
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.category-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-.back-btn {
-  background: transparent;
-  border: 1px solid var(--accent-primary);
-  color: var(--accent-primary);
-  padding: 10px 20px;
-  cursor: pointer;
-  width: fit-content; /* El botón solo ocupa lo que mide su texto */
-  margin-bottom: 10px;
-  transition: all 0.3s ease;
-  font-family: var(--font-text);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
-  /* Asegura que el botón reciba los clics */
-  position: relative;
-  z-index: 10;
-}
-
-.back-btn:hover {
-  background: var(--accent-primary);
-  color: #000;
-  transform: translateX(-5px); /* Pequeño desplazamiento a la izquierda */
-}
-
-.detalle-header h1 {
-  margin: 10px 0 0 0;
-  font-size: 2.5rem;
+.category-header h1 {
   font-family: var(--font-title);
+  font-size: 3.5rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
   color: #fff;
 }
 
-.detalle-header p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 1rem;
+.header-line {
+  width: 60px;
+  height: 3px;
+  background: var(--accent-primary);
+  margin: 0 auto 20px;
 }
 
-/* EFECTO MASONRY (Tipo Pinterest) */
+/* Diseño de la Galería Masonry Mejorado */
 .masonry-grid {
-  columns: 3 300px;
-  column-gap: 15px;
-  padding: 0 15px;
+  columns: 3 350px; /* Ajusta columnas según el ancho */
+  column-gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .masonry-item {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   break-inside: avoid;
+  border-radius: 12px;
   overflow: hidden;
-  cursor: zoom-in;
-  border-radius: 4px;
+  background: #111;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.photo-wrapper {
+  position: relative;
+  width: 100%;
 }
 
 .masonry-item img {
   width: 100%;
   display: block;
-  transition: all 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
-.masonry-item img:hover {
-  filter: brightness(1.1);
-  transform: scale(1.03);
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(134, 132, 255, 0.2); /* Tu color de acento muy sutil */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Estilos para el Lightbox */
+.photo-overlay span {
+  color: white;
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.masonry-item:hover .photo-overlay {
+  opacity: 1;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Ajustes del Lightbox para que sea más moderno */
 .lightbox-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 40px;
+}
+
+/* Ajuste del contenedor que envuelve la imagen abierta */
+.lightbox-content {
+  position: relative;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  padding: 20px;
-  cursor: zoom-out;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center;     /* Centra horizontalmente */
+  pointer-events: none;    /* Evita que el contenedor interfiera con los clics de cierre */
 }
 
-.lightbox-overlay img {
-  max-width: 90%;
-  max-height: 85vh;
-  object-fit: contain;
-  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+.lightbox-content img {
+  /* Obliga a la imagen a no ser más grande que la pantalla */
+  max-width: 90vw;   /* Máximo 90% del ancho de la ventana */
+  max-height: 80vh;  /* Máximo 80% del alto para dejar espacio al texto abajo */
+  
+  /* Mantiene la proporción sin estirar la foto */
+  object-fit: contain; 
+  
   border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  pointer-events: auto; /* Permite interacción si fuera necesario */
+  background-color: rgba(0,0,0,0.2); /* Fondo sutil por si la foto carga lento */
 }
 
-.close-lightbox {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s;
+/* Ajuste del pie de foto para que no empuje la imagen */
+.lightbox-caption {
+  margin-top: 15px;
+  color: rgba(255,255,255,0.8);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-align: center;
+  max-width: 80%;
 }
 
 .close-lightbox:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--accent-primary);
+  color: black;
 }
 
 .lightbox-caption {
-  position: absolute;
-  bottom: 30px;
-  color: #fff;
-  font-family: var(--font-text);
+  margin-top: 20px;
+  color: rgba(255,255,255,0.7);
   letter-spacing: 2px;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px 15px;
-  border-radius: 20px;
 }
 
 @media (max-width: 768px) {
-  .detalle-evento-page {
-    padding-top: 100px; /* Un poco menos en móvil */
-  }
-  
-  .masonry-grid {
-    columns: 2 180px;
-    column-gap: 10px;
-    padding: 0 10px;
-  }
-
-  .detalle-header h1 {
-    font-size: 2rem;
-  }
+  .category-header h1 { font-size: 2.2rem; }
+  .masonry-grid { columns: 2 160px; }
 }
