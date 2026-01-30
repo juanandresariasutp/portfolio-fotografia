@@ -8,7 +8,7 @@ function Hero() {
       <div className="hero-container">
         {/* LADO IZQUIERDO: TEXTO */}
         <div className="hero-content">
-          <h1>Juan Andrés Arias</h1>
+          <h1>Juan Andrés Arias Tascón</h1>
           <p>Fotógrafo de eventos, deportes y retratos</p>
           <a href="#contact" className="hero-btn">
             Contáctame

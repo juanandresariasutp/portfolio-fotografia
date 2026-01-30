@@ -82,13 +82,14 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <BrowserRouter>
+    /* Se añade el basename para que las rutas funcionen en la subcarpeta de GitHub Pages */
+    <BrowserRouter basename="/portfolio-fotografia">
       {/* Aurora se coloca aquí para que sirva de fondo global */}
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: -1, overflow: 'hidden' }}>
         <Aurora
-          colorStops={["#000001", "#454496", "#8684ff"]}
+          colorStops={["#000001", "#201f49", "#0f021c"]}
           blend={1}
-          amplitude={1.0}
+          amplitude={1.2}
           speed={1.2}
         />
       </div>

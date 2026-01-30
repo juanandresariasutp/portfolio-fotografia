@@ -46,17 +46,6 @@ function Contact() {
               Enviar
             </button>
           </form>
-
-          <div className="contact-alt">
-            <a
-              href="https://wa.me/573207161427"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whatsapp-link"
-            >
-              O escríbeme por WhatsApp
-            </a>
-          </div>
         </div>
         {/* Fin de la tarjeta */}
 

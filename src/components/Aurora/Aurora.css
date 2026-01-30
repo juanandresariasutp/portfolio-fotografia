@@ -4,6 +4,6 @@
   position: absolute; /* Importante para que sea fondo */
   top: 0;
   left: 0;
-  z-index: -1; /* Se coloca detrás de todo */
+  z-index: 10; /* Se coloca detrás de todo */
   pointer-events: none;
 }
