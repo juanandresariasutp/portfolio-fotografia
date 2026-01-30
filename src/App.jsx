@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PageTransition from './components/PageTransition';
 import Aurora from './components/Aurora/Aurora'; // <-- Importamos Aurora
+import WhatsAppButton from './components/WhatsAppButton';
 
 // Páginas
 import Eventos from './pages/Eventos';
@@ -99,6 +100,8 @@ function App() {
       
       {/* Llamamos al componente que tiene las rutas y las animaciones */}
       <AnimatedRoutes />
+      {/* Botón de WhatsApp Global */}
+      <WhatsAppButton />
       
       <Footer />
     </BrowserRouter>

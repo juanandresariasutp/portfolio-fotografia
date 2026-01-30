@@ -10,7 +10,7 @@ function Hero() {
         <div className="hero-content">
           <h1>Juan Andrés Arias Tascón</h1>
           <p>Fotógrafo de eventos, deportes y retratos</p>
-          <a href="#contact" className="hero-btn">
+          <a href="https://wa.me/3207161427" className="hero-btn">
             Contáctame
           </a>
         </div>
