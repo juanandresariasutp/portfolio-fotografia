@@ -24,22 +24,29 @@
   margin: 0 auto 20px;
 }
 
-/* Diseño de la Galería Masonry Mejorado */
-.masonry-grid {
-  columns: 3 350px; /* Ajusta columnas según el ancho */
-  column-gap: 20px;
+/* --- DISEÑO DE GALERÍA POR COLUMNAS (Optimizado) --- */
+.custom-masonry-grid {
+  display: flex;
+  gap: 20px;
   max-width: 1400px;
   margin: 0 auto;
+  align-items: flex-start;
+}
+
+.masonry-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .masonry-item {
-  margin-bottom: 20px;
-  break-inside: avoid;
   border-radius: 12px;
   overflow: hidden;
   background: #111;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   cursor: pointer;
+  width: 100%;
 }
 
 .photo-wrapper {
@@ -56,7 +63,7 @@
 .photo-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(134, 132, 255, 0.2); /* Tu color de acento muy sutil */
+  background: rgba(134, 132, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,7 +89,7 @@
   transform: scale(1.05);
 }
 
-/* Ajustes del Lightbox para que sea más moderno */
+/* --- LIGHTBOX MODERNO --- */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -92,49 +99,47 @@
   justify-content: center;
   align-items: center;
   z-index: 3000;
-  padding: 40px;
+  padding: 20px;
 }
 
-/* Ajuste del contenedor que envuelve la imagen abierta */
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3010;
+}
+
+.close-lightbox:hover {
+  background: var(--accent-primary);
+  color: black;
+}
+
 .lightbox-content {
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra verticalmente */
-  align-items: center;     /* Centra horizontalmente */
-  pointer-events: none;    /* Evita que el contenedor interfiera con los clics de cierre */
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
 }
 
 .lightbox-content img {
-  /* Obliga a la imagen a no ser más grande que la pantalla */
-  max-width: 90vw;   /* Máximo 90% del ancho de la ventana */
-  max-height: 80vh;  /* Máximo 80% del alto para dejar espacio al texto abajo */
-  
-  /* Mantiene la proporción sin estirar la foto */
-  object-fit: contain; 
-  
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
   border-radius: 4px;
   box-shadow: 0 0 50px rgba(0,0,0,0.8);
-  pointer-events: auto; /* Permite interacción si fuera necesario */
-  background-color: rgba(0,0,0,0.2); /* Fondo sutil por si la foto carga lento */
-}
-
-/* Ajuste del pie de foto para que no empuje la imagen */
-.lightbox-caption {
-  margin-top: 15px;
-  color: rgba(255,255,255,0.8);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-align: center;
-  max-width: 80%;
-}
-
-.close-lightbox:hover {
-  background: var(--accent-primary);
-  color: black;
+  pointer-events: auto;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .lightbox-caption {
@@ -143,9 +148,33 @@
   letter-spacing: 2px;
   font-size: 0.9rem;
   text-transform: uppercase;
+  text-align: center;
+  max-width: 80%;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 992px) {
+  .custom-masonry-grid {
+    gap: 15px;
+  }
 }
 
 @media (max-width: 768px) {
   .category-header h1 { font-size: 2.2rem; }
-  .masonry-grid { columns: 2 160px; }
+  
+  /* En tablets/móviles grandes usamos 2 columnas */
+  .masonry-column:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-masonry-grid {
+    flex-direction: column;
+  }
+  
+  /* En móviles pequeños volvemos a mostrar todo en una sola columna */
+  .masonry-column:last-child {
+    display: flex;
+  }
 }
