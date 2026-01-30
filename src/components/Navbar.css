@@ -1,105 +1,295 @@
 .navbar {
+
   position: fixed;
+
   top: 0;
+
   width: 100%;
+
   padding: 25px 5%;
+
   display: flex;
+
   justify-content: center;
+
   z-index: 1000;
+
   transition: all 0.4s ease;
+
   background: transparent;
+
 }
+
+
 
 /* Efecto cuando bajas la página (Scroll) */
+
 .navbar.scrolled {
+
   padding: 15px 5%;
+
   background: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+
   backdrop-filter: blur(10px);    /* Efecto de cristal borroso */
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
 }
+
+
 
 .nav-container {
+
   width: 100%;
+
   max-width: 1400px;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
 }
+
+
 
 .nav-logo {
+
   font-family: var(--font-title);
+
   color: #fff;
+
   font-size: 1.4rem;
+
   font-weight: 600;
+
   letter-spacing: 2px;
+
   text-decoration: none;
+
 }
+
+
 
 .nav-logo span {
+
   font-size: 0.8rem;
+
   font-weight: 300;
+
   color: var(--accent-primary);
+
   display: block;
+
   margin-top: -5px;
+
 }
+
+
 
 .nav-links {
+
   display: flex;
+
   align-items: center;
+
   gap: 30px;
+
 }
+
+
 
 .nav-links a {
+
   color: #d1d1d1;
+
   text-decoration: none;
+
   font-size: 0.9rem;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
+
   transition: color 0.3s;
+
 }
+
+
 
 .nav-links a:hover, .nav-links a.active {
+
   color: var(--accent-primary);
+
 }
+
+
 
 /* Botón estilo CTA */
+
 .nav-btn {
+
   border: 1px solid var(--accent-primary);
+
   padding: 8px 20px !important;
+
   border-radius: 4px;
+
 }
+
+
 
 .nav-btn:hover {
+
   background: var(--accent-primary);
+
   color: #000 !important;
+
 }
 
+
+
 .mobile-menu-icon {
+
   display: none;
+
   color: white;
+
   background: none;
+
   border: none;
+
+  cursor: pointer;
+
+}
+
+
+
+/* RESPONSIVO MÓVIL */
+
+@media (max-width: 768px) {
+
+  .mobile-menu-icon { display: block; }
+
+ 
+
+  .nav-links {
+
+    position: absolute;
+
+    top: 100%;
+
+    right: 0;
+
+    width: 100%;
+
+    height: 100vh;
+
+    background: #000;
+
+    flex-direction: column;
+
+    padding-top: 50px;
+
+    transform: translateX(100%);
+
+    transition: transform 0.4s ease;
+
+  }
+
+
+
+  .nav-links.active {
+
+    transform: translateX(0);
+
+  }
+
+}
+
+/* --- Lógica del Dropdown (Submenú) --- */
+
+/* Contenedor del ítem que tiene hijos */
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Importante para móvil */
+  align-items: center;
+}
+
+/* El enlace principal con la flechita */
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
 }
 
-/* RESPONSIVO MÓVIL */
+/* El cuadro desplegable en Escritorio */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1100;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Mostrar al hacer Hover en Escritorio */
+@media (min-width: 769px) {
+  .nav-dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+/* Estilo de los enlaces dentro del submenú */
+.dropdown-content a {
+  padding: 12px 20px !important;
+  font-size: 0.8rem !important;
+  width: 100%;
+  text-align: center;
+  border: none !important; /* Quita bordes si hereda de .nav-btn */
+}
+
+.dropdown-content a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-primary) !important;
+}
+
+/* --- AJUSTE PARA TU MENÚ MÓVIL EXISTENTE --- */
 @media (max-width: 768px) {
-  .mobile-menu-icon { display: block; }
-  
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background: #000;
-    flex-direction: column;
-    padding-top: 50px;
-    transform: translateX(100%);
-    transition: transform 0.4s ease;
+  .dropdown-content {
+    position: static; /* Se vuelve parte de la lista vertical */
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 10px 0 20px 0;
+    gap: 15px; /* Espacio entre categorías en móvil */
   }
 
-  .nav-links.active {
-    transform: translateX(0);
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .dropdown-trigger {
+    margin-bottom: 10px;
+    color: var(--accent-primary) !important; /* Resalta el título en móvil */
   }
 }

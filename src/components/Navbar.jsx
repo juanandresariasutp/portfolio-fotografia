@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react'; // Iconos para móvil
+import { Menu, X, ChevronDown } from 'lucide-react'; // Añadimos ChevronDown
 import './Navbar.css';
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Efecto para cambiar el fondo al hacer scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -16,19 +15,33 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMenu = () => setIsMobileMenuOpen(false);
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
+        <Link to="/" className="nav-logo" onClick={closeMenu}>
           J. ARIAS <span>FOTOGRAFÍA</span>
         </Link>
 
-        {/* Menú de escritorio */}
+        {/* Menú de escritorio y móvil */}
         <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          <NavLink to="/" end onClick={() => setIsMobileMenuOpen(false)}>Inicio</NavLink>
-          <NavLink to="/eventos" onClick={() => setIsMobileMenuOpen(false)}>Eventos</NavLink>
-          <NavLink to="/portafolio" onClick={() => setIsMobileMenuOpen(false)}>Portafolio</NavLink>
-          <NavLink to="/contacto" className="nav-btn" onClick={() => setIsMobileMenuOpen(false)}>Contáctame</NavLink>
+          <NavLink to="/" end onClick={closeMenu}>Inicio</NavLink>
+          
+          {/* NUEVO: Item con Dropdown */}
+          <div className="nav-dropdown">
+            <NavLink to="/eventos" onClick={closeMenu} className="dropdown-trigger">
+              Eventos <ChevronDown size={14} />
+            </NavLink>
+            <div className="dropdown-content">
+              <Link to="/eventos/bodas" onClick={closeMenu}>Bodas</Link>
+              <Link to="/eventos/15-anos" onClick={closeMenu}>15 Años</Link>
+              <Link to="/eventos/cumpleanos" onClick={closeMenu}>Cumpleaños</Link>
+              <Link to="/eventos/bautizos" onClick={closeMenu}>Bautizos</Link>
+            </div>
+          </div>
+
+          <NavLink to="https://wa.me/3207161427" className="nav-btn" onClick={closeMenu}>Contáctame</NavLink>
         </div>
 
         {/* Botón menú móvil */}
