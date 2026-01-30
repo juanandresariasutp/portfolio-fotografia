@@ -75,75 +75,82 @@ button:hover {
 }
 
 
-
-
-
 /*Pages*/
 
 .category-page {
+  padding: 120px 5% 60px;
   min-height: 100vh;
-  padding: 120px 0 80px; /* Cambiado el 10% por 0 */
 }
 
-/* Opcional: añade un poco de padding solo a los textos para que no peguen al borde */
-.category-page h1, 
-.category-page p {
-  padding-left: 5%;
-  width: 100%;       /* Ocupa todo el ancho disponible */
-  margin: 0;
+.category-nav {
+  margin-bottom: 2rem;
 }
 
-.photo-grid {
-  margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 5px; /* Reduje el gap para que se vea más compacto */
-}
-
-.photo-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 3 / 4;
-  background-color: var(--bg-secondary);
-  transition: transform 0.4s ease, filter 0.4s ease;
+.back-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.photo-grid img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.05);
+.back-btn:hover {
+  background: white;
+  color: black;
 }
 
-/* Contenedor principal para que el texto respire */
-.category-header {
-  padding: 0 5%;
-  margin-bottom: 40px;
+.category-header h1 {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
-/* Ajuste del grid para que sea de borde a borde si lo deseas */
+.header-line {
+  width: 60px;
+  height: 3px;
+  background: var(--accent-primary);
+  margin: 0 auto 20px;
+}
+
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px; /* Espacio pequeño entre opciones */
-  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
 
 .sub-category-card {
   position: relative;
-  height: 400px;
+  display: block;
+  height: 450px;
   overflow: hidden;
-  display: block; /* Para que el Link ocupe todo el espacio */
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .sub-category-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
 }
 
-/* Overlay para que el texto sea SIEMPRE legible */
+.sub-category-card:hover .image-wrapper {
+  transform: scale(1.1);
+}
+
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -151,22 +158,34 @@ button:hover {
   display: flex;
   align-items: flex-end;
   padding: 30px;
-  transition: background 0.4s ease;
-}
-
-.card-overlay span {
-  color: white;
-  font-family: var(--font-title);
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* Efectos al pasar el mouse */
-.sub-category-card:hover img {
-  transform: scale(1.1);
+  transition: background 0.3s ease;
 }
 
 .sub-category-card:hover .card-overlay {
-  background: rgba(134, 132, 255, 0.3); /* Un tinte de tu color de acento */
+  background: linear-gradient(to top, rgba(134, 132, 255, 0.4) 0%, transparent 100%);
+}
+
+.overlay-content h3 {
+  text-shadow: 3px 3px 8px #000;
+  color: white;
+  font-size: 1.8rem;
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+}
+
+.explore-text {
+  color: #ffffff;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  text-shadow: 3px 3px 8px #000;
+}
+
+.sub-category-card:hover .explore-text {
+  opacity: 1;
+  transform: translateY(0);
 }

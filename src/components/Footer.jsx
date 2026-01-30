@@ -16,16 +16,16 @@ function Footer() {
 
         {/* CENTRO: Redes Sociales */}
         <div className="footer-socials">
-          <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a href="https://www.instagram.com/_avenue.vitae_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <Instagram size={24} />
           </a>
-          <a href="https://wa.me/tunumerotelefono" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <a href="https://wa.me/573207161427" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
             <MessageCircle size={24} />
           </a>
-          <a href="https://linkedin.com/in/tu_usuario" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/juan-andrés-arias-tascón-328704280" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <Linkedin size={24} />
           </a>
-          <a href="mailto:tu-correo@ejemplo.com" aria-label="Email">
+          <a href="mailto:juanandres.arias@utp.edu.co" aria-label="Email">
             <Mail size={24} />
           </a>
         </div>
