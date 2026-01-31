@@ -49,37 +49,7 @@ import foto42 from '../../assets/eventos/bodas/boda (42).jpg';
 import foto43 from '../../assets/eventos/bodas/boda (43).jpg';
 import foto44 from '../../assets/eventos/bodas/boda (44).jpg';
 import foto45 from '../../assets/eventos/bodas/boda (45).jpg';
-import foto46 from '../../assets/eventos/bodas/boda (46).jpg';
-import foto47 from '../../assets/eventos/bodas/boda (47).jpg';
-import foto48 from '../../assets/eventos/bodas/boda (48).jpg';
-import foto49 from '../../assets/eventos/bodas/boda (49).jpg';
-import foto50 from '../../assets/eventos/bodas/boda (50).jpg';
-import foto51 from '../../assets/eventos/bodas/boda (51).jpg';
-import foto52 from '../../assets/eventos/bodas/boda (52).jpg';
-import foto53 from '../../assets/eventos/bodas/boda (53).jpg';
-import foto54 from '../../assets/eventos/bodas/boda (54).jpg';
-import foto55 from '../../assets/eventos/bodas/boda (55).jpg';
-import foto56 from '../../assets/eventos/bodas/boda (56).jpg';
-import foto57 from '../../assets/eventos/bodas/boda (57).jpg';
-import foto58 from '../../assets/eventos/bodas/boda (58).jpg';
-import foto59 from '../../assets/eventos/bodas/boda (59).jpg';
-import foto60 from '../../assets/eventos/bodas/boda (60).jpg';
-import foto61 from '../../assets/eventos/bodas/boda (61).jpg';
-import foto62 from '../../assets/eventos/bodas/boda (62).jpg';
-import foto63 from '../../assets/eventos/bodas/boda (63).jpg';
-import foto64 from '../../assets/eventos/bodas/boda (64).jpg';
-import foto65 from '../../assets/eventos/bodas/boda (65).jpg';
-import foto66 from '../../assets/eventos/bodas/boda (66).jpg';
-import foto67 from '../../assets/eventos/bodas/boda (67).jpg';
-import foto68 from '../../assets/eventos/bodas/boda (68).jpg';
-import foto69 from '../../assets/eventos/bodas/boda (69).jpg';
-import foto70 from '../../assets/eventos/bodas/boda (70).jpg';
-import foto71 from '../../assets/eventos/bodas/boda (71).jpg';
-import foto72 from '../../assets/eventos/bodas/boda (72).jpg';
-import foto73 from '../../assets/eventos/bodas/boda (73).jpg';
-import foto74 from '../../assets/eventos/bodas/boda (74).jpg';
-import foto75 from '../../assets/eventos/bodas/boda (75).jpg';
-import foto76 from '../../assets/eventos/bodas/boda (76).jpg';
+
 
 const fotosBodas = [
   { id: 1, src: foto1, alt: 'Fotografía de Boda' },
@@ -127,37 +97,7 @@ const fotosBodas = [
   { id: 43, src: foto43, alt: 'Fotografía de Boda' },
   { id: 44, src: foto44, alt: 'Fotografía de Boda' },
   { id: 45, src: foto45, alt: 'Fotografía de Boda' },
-  { id: 46, src: foto46, alt: 'Fotografía de Boda' },
-  { id: 47, src: foto47, alt: 'Fotografía de Boda' },
-  { id: 48, src: foto48, alt: 'Fotografía de Boda' },
-  { id: 49, src: foto49, alt: 'Fotografía de Boda' },
-  { id: 50, src: foto50, alt: 'Fotografía de Boda' },
-  { id: 51, src: foto51, alt: 'Fotografía de Boda' },
-  { id: 52, src: foto52, alt: 'Fotografía de Boda' },
-  { id: 53, src: foto53, alt: 'Fotografía de Boda' },
-  { id: 54, src: foto54, alt: 'Fotografía de Boda' },
-  { id: 55, src: foto55, alt: 'Fotografía de Boda' },
-  { id: 56, src: foto56, alt: 'Fotografía de Boda' },
-  { id: 57, src: foto57, alt: 'Fotografía de Boda' },
-  { id: 58, src: foto58, alt: 'Fotografía de Boda' },
-  { id: 59, src: foto59, alt: 'Fotografía de Boda' },
-  { id: 60, src: foto60, alt: 'Fotografía de Boda' },
-  { id: 61, src: foto61, alt: 'Fotografía de Boda' },
-  { id: 62, src: foto62, alt: 'Fotografía de Boda' },
-  { id: 63, src: foto63, alt: 'Fotografía de Boda' },
-  { id: 64, src: foto64, alt: 'Fotografía de Boda' },
-  { id: 65, src: foto65, alt: 'Fotografía de Boda' },
-  { id: 66, src: foto66, alt: 'Fotografía de Boda' },
-  { id: 67, src: foto67, alt: 'Fotografía de Boda' },
-  { id: 68, src: foto68, alt: 'Fotografía de Boda' },
-  { id: 69, src: foto69, alt: 'Fotografía de Boda' },
-  { id: 70, src: foto70, alt: 'Fotografía de Boda' },
-  { id: 71, src: foto71, alt: 'Fotografía de Boda' },
-  { id: 72, src: foto72, alt: 'Fotografía de Boda' },
-  { id: 73, src: foto73, alt: 'Fotografía de Boda' },
-  { id: 74, src: foto74, alt: 'Fotografía de Boda' },
-  { id: 75, src: foto75, alt: 'Fotografía de Boda' },
-  { id: 76, src: foto76, alt: 'Fotografía de Boda' },
+
 ];
 
 const containerVariants = {
@@ -223,7 +163,7 @@ function Bodas() {
       <motion.header className="category-header" variants={itemVariants}>
         <h1>Bodas</h1>
         <div className="header-line"></div>
-        <p>Capturando la esencia del amor en cada detalle.</p>
+        <p>Historias de amor que conservan la emoción, la belleza y la esencia de uno de los días más importantes de sus vidas.</p>
       </motion.header>
 
       <div className="custom-masonry-grid">

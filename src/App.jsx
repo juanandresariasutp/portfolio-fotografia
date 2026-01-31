@@ -16,6 +16,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 // Páginas
 import Eventos from './pages/Eventos';
 import Bodas from './pages/Eventos/bodas';
+import Quinces from './pages/Eventos/Quinces';
 
 // Componente para resetear el scroll
 function ScrollToTop() {
@@ -59,9 +60,9 @@ function AnimatedRoutes() {
           </PageTransition>
         } />
         
-        <Route path="/eventos/15-anos" element={
+        <Route path="/eventos/Quinces" element={
           <PageTransition>
-            <div className="page-placeholder">Página de 15 Años en construcción</div>
+            <Quinces />
           </PageTransition>
         } />
         

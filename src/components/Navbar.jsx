@@ -35,7 +35,7 @@ function Navbar() {
             </NavLink>
             <div className="dropdown-content">
               <Link to="/eventos/bodas" onClick={closeMenu}>Bodas</Link>
-              <Link to="/eventos/15-anos" onClick={closeMenu}>15 Años</Link>
+              <Link to="/eventos/Quinces" onClick={closeMenu}>15 Años</Link>
               <Link to="/eventos/cumpleanos" onClick={closeMenu}>Cumpleaños</Link>
               <Link to="/eventos/bautizos" onClick={closeMenu}>Bautizos</Link>
             </div>
