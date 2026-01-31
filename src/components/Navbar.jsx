@@ -41,7 +41,7 @@ function Navbar() {
             </div>
           </div>
 
-          <NavLink to="https://wa.me/3207161427" className="nav-btn" onClick={closeMenu}>Contáctame</NavLink>
+          <NavLink to="https://wa.me/573207161427" className="nav-btn" onClick={closeMenu}>Contáctame</NavLink>
         </div>
 
         {/* Botón menú móvil */}

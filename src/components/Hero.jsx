@@ -9,8 +9,8 @@ function Hero() {
         {/* LADO IZQUIERDO: TEXTO */}
         <div className="hero-content">
           <h1>Juan Andrés Arias Tascón</h1>
-          <p>Fotógrafo de eventos, deportes y retratos</p>
-          <a href="https://wa.me/3207161427" className="hero-btn">
+          <p>Realizador Audiovisual y Fotógrafo con más de 5 años de experiencia.</p>
+          <a href="https://wa.me/573207161427" className="hero-btn">
             Contáctame
           </a>
         </div>
