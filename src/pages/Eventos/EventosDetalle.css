@@ -153,28 +153,83 @@
 }
 
 /* --- RESPONSIVO --- */
+
 @media (max-width: 992px) {
   .custom-masonry-grid {
-    gap: 15px;
+    gap: 15px; /* Reducimos espacio entre fotos */
   }
 }
 
 @media (max-width: 768px) {
-  .category-header h1 { font-size: 2.2rem; }
-  
-  /* En tablets/móviles grandes usamos 2 columnas */
+  .category-header h1 { 
+    font-size: 2.2rem; 
+  }
+
+  /* Forzamos que siempre haya al menos 2 columnas */
+  .custom-masonry-grid {
+    gap: 10px; /* Gap más pequeño para ganar espacio */
+  }
+
+  /* Ocultamos la tercera columna para que las otras dos ganen ancho */
   .masonry-column:last-child {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
+  /* Mantenemos las 2 columnas incluso en pantallas muy pequeñas */
   .custom-masonry-grid {
-    flex-direction: column;
+    flex-direction: row; /* Asegura que no se pongan una debajo de otra */
+    padding: 0 5px;
+  }
+
+  .masonry-column {
+    gap: 10px; /* Espacio vertical entre fotos de la misma columna */
+  }
+
+  .category-header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 4px;
   }
   
-  /* En móviles pequeños volvemos a mostrar todo en una sola columna */
-  .masonry-column:last-child {
-    display: flex;
+  .photo-overlay span {
+    font-size: 0.6rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Botones de navegación Lightbox */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: white;
+  padding: 20px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3020;
+  border-radius: 8px;
+}
+
+.nav-arrow:hover {
+  background: var(--accent-primary);
+  color: black;
+}
+
+.nav-arrow.prev { left: 20px; }
+.nav-arrow.next { right: 20px; }
+
+/* En móvil ocultamos las flechas para usar el dedo (swipe) */
+@media (max-width: 768px) {
+  .nav-arrow {
+    display: none;
+  }
+  
+  .lightbox-content img {
+    /* Permitimos que la imagen sea un poco más grande en móvil */
+    max-width: 95vw;
+    touch-action: none; /* Evita el scroll del navegador mientras arrastras la foto */
   }
 }

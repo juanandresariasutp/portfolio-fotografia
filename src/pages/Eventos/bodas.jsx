@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowLeft } from 'lucide-react';
+import { X, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'; 
 import './EventosDetalle.css';
 
 // Importa tus fotos
@@ -174,16 +174,38 @@ const itemVariants = {
 };
 
 function Bodas() {
-  const [selectedImg, setSelectedImg] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
 
-  // Dividimos las fotos en 3 columnas equilibradas para optimizar la carga visual
+  // Dividimos las fotos en 3 columnas y guardamos su índice original para el carrusel
   const columnas = useMemo(() => {
     const cols = [[], [], []];
     fotosBodas.forEach((foto, index) => {
-      cols[index % 3].push(foto);
+      cols[index % 3].push({ ...foto, originalIndex: index });
     });
     return cols;
   }, []);
+
+  const nextPhoto = useCallback((e) => {
+    e?.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1 === fotosBodas.length ? 0 : prev + 1));
+  }, []);
+
+  const prevPhoto = useCallback((e) => {
+    e?.stopPropagation();
+    setCurrentIndex((prev) => (prev === 0 ? fotosBodas.length - 1 : prev - 1));
+  }, []);
+
+  // Navegación por teclado
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (currentIndex === null) return;
+      if (e.key === 'ArrowRight') nextPhoto();
+      if (e.key === 'ArrowLeft') prevPhoto();
+      if (e.key === 'Escape') setCurrentIndex(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentIndex, nextPhoto, prevPhoto]);
 
   return (
     <motion.div 
@@ -204,7 +226,6 @@ function Bodas() {
         <p>Capturando la esencia del amor en cada detalle.</p>
       </motion.header>
 
-      {/* Galería renderizada por columnas independientes */}
       <div className="custom-masonry-grid">
         {columnas.map((col, colIndex) => (
           <motion.div 
@@ -218,7 +239,7 @@ function Bodas() {
                 className="masonry-item"
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                onClick={() => setSelectedImg(foto)}
+                onClick={() => setCurrentIndex(foto.originalIndex)}
               >
                 <div className="photo-wrapper">
                   <img src={foto.src} alt={foto.alt} loading="lazy" />
@@ -233,28 +254,46 @@ function Bodas() {
       </div>
 
       <AnimatePresence>
-        {selectedImg && (
+        {currentIndex !== null && (
           <motion.div 
             className="lightbox-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedImg(null)}
+            onClick={() => setCurrentIndex(null)}
           >
-            <button className="close-lightbox" onClick={() => setSelectedImg(null)}>
+            {/* Botones de navegación (PC) */}
+            <button className="nav-arrow prev" onClick={prevPhoto}>
+              <ChevronLeft size={40} />
+            </button>
+            <button className="nav-arrow next" onClick={nextPhoto}>
+              <ChevronRight size={40} />
+            </button>
+
+            <button className="close-lightbox" onClick={() => setCurrentIndex(null)}>
               <X size={30} />
             </button>
             
             <div className="lightbox-content">
               <motion.img 
-                src={selectedImg.src} 
-                alt={selectedImg.alt}
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                key={currentIndex}
+                src={fotosBodas[currentIndex].src} 
+                alt={fotosBodas[currentIndex].alt}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(e, { offset }) => {
+                  if (offset.x < -50) nextPhoto();
+                  else if (offset.x > 50) prevPhoto();
+                }}
                 onClick={(e) => e.stopPropagation()} 
               />
-              <p className="lightbox-caption">{selectedImg.alt}</p>
+              <p className="lightbox-caption">
+                {currentIndex + 1} / {fotosBodas.length} - {fotosBodas[currentIndex].alt}
+              </p>
             </div>
           </motion.div>
         )}
