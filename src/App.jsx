@@ -18,6 +18,7 @@ import Eventos from './pages/Eventos';
 import Bodas from './pages/Eventos/bodas';
 import Quinces from './pages/Eventos/Quinces';
 import Cumples from './pages/Eventos/Cumpleanos';
+import Bautizos from './pages/Eventos/Bautizos';
 
 // Componente para resetear el scroll
 function ScrollToTop() {
@@ -73,9 +74,9 @@ function AnimatedRoutes() {
           </PageTransition>
         } />
         
-        <Route path="/eventos/bautizos" element={
+        <Route path="/eventos/Bautizos" element={
           <PageTransition>
-            <div className="page-placeholder">Página de Bautizos en construcción</div>
+            <Bautizos />
           </PageTransition>
         } />
       </Routes>
