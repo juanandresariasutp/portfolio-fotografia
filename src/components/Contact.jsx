@@ -39,7 +39,7 @@ function Contact() {
 
             <div className="checkbox-group">
               <input type="checkbox" id="auth" name="authorization" required />
-                <label htmlFor="auth">Autorizo que me envíen información.</label>
+                <label htmlFor="auth">Autorizo que me envíen más información.</label>
             </div>
 
             <button type="submit" className="submit-btn">
