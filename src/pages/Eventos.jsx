@@ -11,8 +11,8 @@ import imgBautizos from '../assets/eventos/bautizo-portada.jpg';
 const subEventos = [
   { id: 1, title: 'Bodas', img: imgBodas, path: '/eventos/bodas' },
   { id: 2, title: '15 Años', img: img15Anos, path: '/eventos/Quinces' },
-  { id: 3, title: 'Cumpleaños', img: imgCumple, path: '/eventos/cumpleanos' },
-  { id: 4, title: 'Bautizos & Comuniones', img: imgBautizos, path: '/eventos/bautizos' },
+  { id: 3, title: 'Cumpleaños', img: imgCumple, path: '/eventos/Cumpleanos' },
+  { id: 4, title: 'Bautizos & Comuniones', img: imgBautizos, path: '/eventos/Bautizos' },
 ];
 
 // Variantes de animación para la cuadrícula

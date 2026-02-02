@@ -15,6 +15,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 
 // Páginas
 import Eventos from './pages/Eventos';
+import Deportes from './pages/Deportes';
 import Bodas from './pages/Eventos/bodas';
 import Quinces from './pages/Eventos/Quinces';
 import Cumples from './pages/Eventos/Cumpleanos';
@@ -47,7 +48,13 @@ function AnimatedRoutes() {
             </PageTransition>
           }
         />
-
+        {/* --- NUEVA RUTA DE DEPORTES --- */}
+        <Route path="/deportes" element={
+          <PageTransition>
+            <Deportes />
+          </PageTransition>
+        } />
+        
         {/* Ruta de Menú de Eventos */}
         <Route path="/eventos" element={
           <PageTransition>

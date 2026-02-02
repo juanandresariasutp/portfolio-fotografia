@@ -1,0 +1,160 @@
+.deportes-page {
+  padding: 120px 5% 60px;
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.deportes-header {
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deportes-header h1 {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.header-line {
+  width: 60px;
+  height: 3px;
+  background: var(--accent-primary);
+  margin: 10px auto;
+  display: block;
+}
+
+.deporte-section {
+    padding: 5px 0px 5px 0px;
+  margin-bottom: 0px;
+  width: 100%;
+  /* Mantenemos relative para que las flechas se posicionen respecto a toda la sección */
+  position: relative; 
+}
+
+.deporte-titulo {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  border-left: 4px solid;
+}
+
+/* Carrusel */
+.carousel-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0px; 
+}
+
+/* CONTENEDOR DE CONTROLES ABAJO */
+.controls-container {
+  display: flex;
+  justify-content: center; /* Centra las flechas horizontalmente */
+  align-items: center;
+  gap: 20px; /* Espacio entre la flecha izquierda y derecha */
+  margin-top: 20px; /* Distancia respecto a las fotos */
+  width: 100%;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px; /* Un diseño un poco más moderno (bordes suavizados) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  background: var(--accent-primary, #6366f1); /* O el color que prefieras al pasar el mouse */
+  border-color: transparent;
+  transform: translateY(-3px); /* Pequeño salto hacia arriba al pasar el mouse */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.deportes-swiper {
+  padding: 10px 0 10px 0 !important;
+}
+
+.carousel-item {
+  height: 350px; 
+  width: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+  display: inline-block;
+  cursor: pointer; /* Indica que la foto se puede abrir */
+  user-select: none; /* Evita seleccionar la imagen al hacer clic rápido */
+  transition: opacity 0.3s ease;
+}
+
+.carousel-item img {
+  width: auto;
+  height: 100%;
+  object-fit: contain; 
+  pointer-events: none;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05);
+  opacity: 0.9; /* Efecto visual simple al pasar el mouse */
+}
+
+
+
+/* Ocultar botones originales de Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .deportes-header h1 { 
+    font-size: 2.2rem;
+  }
+  
+  /* En móviles, separamos las flechas ligeramente menos */
+  .custom-nav-container {
+    padding: 0 5px;
+  }
+  .deporte-section {
+    margin-bottom: 20px;
+  }
+
+  .carousel-item {
+    height: 250px; 
+  }
+
+  .deporte-titulo {
+    font-size: 1.4rem;
+  }
+
+  .deportes-page {
+    padding-top: 100px;
+  }
+}
