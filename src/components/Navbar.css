@@ -1,215 +1,111 @@
 .navbar {
-
   position: fixed;
-
   top: 0;
-
   width: 100%;
-
   padding: 25px 5%;
-
   display: flex;
-
   justify-content: center;
-
   z-index: 1000;
-
   transition: all 0.4s ease;
-
   background: transparent;
-
 }
-
-
 
 /* Efecto cuando bajas la página (Scroll) */
-
 .navbar.scrolled {
-
   padding: 15px 5%;
-
   background: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
-
   backdrop-filter: blur(10px);    /* Efecto de cristal borroso */
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
 }
-
-
 
 .nav-container {
-
   width: 100%;
-
   max-width: 1400px;
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
 }
-
-
 
 .nav-logo {
-
   font-family: var(--font-title);
-
   color: #fff;
-
   font-size: 1.4rem;
-
   font-weight: 600;
-
   letter-spacing: 2px;
-
   text-decoration: none;
-
 }
-
-
 
 .nav-logo span {
-
   font-size: 0.8rem;
-
   font-weight: 300;
-
   color: var(--accent-primary);
-
   display: block;
-
   margin-top: -5px;
-
 }
-
-
 
 .nav-links {
-
   display: flex;
-
   align-items: center;
-
   gap: 30px;
-
 }
 
-
-
-.nav-links a {
-
+.nav-links a, .dropdown-trigger{
   color: #d1d1d1;
-
   text-decoration: none;
-
   font-size: 0.9rem;
-
   text-transform: uppercase;
-
   letter-spacing: 1px;
-
   transition: color 0.3s;
-
 }
 
 
 
-.nav-links a:hover, .nav-links a.active {
-
+.nav-links a:hover, .nav-links a.active, .dropdown-trigger:hover {
   color: var(--accent-primary);
-
 }
-
-
 
 /* Botón estilo CTA */
-
 .nav-btn {
-
   border: 1px solid var(--accent-primary);
-
   padding: 8px 20px !important;
-
   border-radius: 4px;
-
 }
-
-
 
 .nav-btn:hover {
-
   background: var(--accent-primary);
-
   color: #000 !important;
-
 }
-
-
 
 .mobile-menu-icon {
-
   display: none;
-
   color: white;
-
   background: none;
-
   border: none;
-
   cursor: pointer;
-
 }
-
-
 
 /* RESPONSIVO MÓVIL */
-
 @media (max-width: 768px) {
-
   .mobile-menu-icon { display: block; }
-
  
-
   .nav-links {
-
     position: absolute;
-
     top: 100%;
-
     right: 0;
-
     width: 100%;
-
     height: 100vh;
-
     background: #000;
-
     flex-direction: column;
-
     padding-top: 50px;
-
     transform: translateX(100%);
-
     transition: transform 0.4s ease;
-
   }
-
-
 
   .nav-links.active {
-
     transform: translateX(0);
-
   }
-
 }
-
 /* --- Lógica del Dropdown (Submenú) --- */
-
 /* Contenedor del ítem que tiene hijos */
 .nav-dropdown {
   position: relative;
@@ -220,10 +116,18 @@
 
 /* El enlace principal con la flechita */
 .dropdown-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit; /* Esto obliga a usar la misma letra que el resto */
+  font-size: inherit;   /* Misma medida */
+  font-weight: inherit; /* Mismo grosor */
+  color: inherit;       /* Mismo color */
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
+  gap: 5px;            /* Espacio entre la palabra y la flechita */
 }
 
 /* El cuadro desplegable en Escritorio */
@@ -245,6 +149,7 @@
   transition: all 0.3s ease;
   z-index: 1100;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  
 }
 
 /* Mostrar al hacer Hover en Escritorio */
@@ -286,6 +191,7 @@
 
   .nav-dropdown {
     width: 100%;
+    
   }
 
   .dropdown-trigger {
@@ -293,3 +199,24 @@
     color: var(--accent-primary) !important; /* Resalta el título en móvil */
   }
 }
+
+/* Solo para móviles */
+@media (max-width: 768px) {
+  .dropdown-content {
+    display: none; /* Por defecto oculto */
+    flex-direction: column;
+    padding-left: 20px; /* Indentación para que se vea como submenú */
+  }
+
+  /* Cuando el estado de React está activo, mostramos el contenido */
+  .dropdown-content.show {
+    display: flex;
+  }
+
+  /* Opcional: Rotar la flechita cuando esté abierto */
+  .rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+  }
+}
+
