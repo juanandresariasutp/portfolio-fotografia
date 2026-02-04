@@ -39,7 +39,7 @@ function Eventos() {
     >
       <div className="category-nav">
         <button onClick={() => window.history.back()} className="back-btn">
-          <ArrowLeft size={20} /> <span>Volver</span>
+          <ArrowLeft size={20} /> <span>Atrás</span>
         </button>
       </div>
 
